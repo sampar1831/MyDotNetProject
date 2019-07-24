@@ -44,7 +44,7 @@
 					{
 						"name": "Unit test and Coverage",
 						"definition": "Unit test and coverage",
-						"command": "dotnet test .\\MyProject.Test --logger \"trx;LogFileName=TestResults.trx\"\nCopy-Item -Path .\\MyProject.Test\\TestResults\\TestResults.trx -Destination .\\testresults.trx -Force -ErrorAction SilentlyContinue\ndotnet test .\\MyProject.Test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover\nCopy-Item -Path .\\MyProject.Test\\coverage.opencover.xml -Destination .\\coverage.xml -Force -ErrorAction SilentlyContinue",
+						"command": ".\\packages\\OpenCover.4.6.519\\tools\\OpenCover.Console.exe -register:Path64 -filter:+[((application.name))]*-[((application.name))]((application.name)).Tests.* -target:.\\packages\\Nunit.ConsoleRunner.3.9.0\\tools\\nunit3-console.exe \"-targetargs:((application.name))/bin/((application.name)).dll --result:test.xml;format=nunit3\" \"-output:coverage.xml\" -searchdirs:((application.name))/obj/Debug",
 						"properties": null
 					}
 				],
